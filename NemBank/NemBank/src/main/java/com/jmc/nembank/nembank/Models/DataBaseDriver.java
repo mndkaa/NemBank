@@ -4,6 +4,7 @@ import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class DataBaseDriver {
     private Connection conn;
@@ -46,7 +47,7 @@ public class DataBaseDriver {
         return resultSet;
     }
 
-    public void createClient(String fName, String lName, String pAddress, String password, String date) {
+    public void createClient(String fName, String lName, String pAddress, String password, LocalDate date) {
         Statement statement;
         try {
             statement = this.conn.createStatement();
@@ -70,7 +71,7 @@ public class DataBaseDriver {
         }
     }
 
-    public void createSavingAccount(String owner, String number, double wLimit, double balance){
+    public void createSavingsAccount(String owner, String number, double wLimit, double balance){
         Statement statement;
         try {
             statement = this.conn.createStatement();
@@ -85,4 +86,17 @@ public class DataBaseDriver {
     /*
     *utility methods
      */
+    public int getLastClientsId(){
+        Statement statement;
+        ResultSet resultSet;
+        int id = 0;
+        try {
+            statement= this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM sqlite_sequence WHERE name='Clients';");
+            id = resultSet.getInt("seq");
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return id;
+    }
 }
