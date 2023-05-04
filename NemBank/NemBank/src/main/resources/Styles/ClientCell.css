@@ -11,7 +11,7 @@
 
 .client_cell_container HBox {
     -fx-spacing: 15;
-    -fx-alignment: center_left;
+    -fx-alignment: Center_left;
 }
 
 .client_cell_container HBox Label {
