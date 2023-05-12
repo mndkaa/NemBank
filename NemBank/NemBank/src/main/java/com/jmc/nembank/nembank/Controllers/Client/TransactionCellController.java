@@ -14,18 +14,18 @@ public class TransactionCellController implements Initializable {
     public FontAwesomeIconView in_icon;
     public Label trans_date_lbl;
     public Label sender_lbl;
-    public Label recevier_lbl;
+    public Label receiver_lbl;
     public Label amount_lbl;
     private final Transaction transaction;
+
     public TransactionCellController(Transaction transaction){
         this.transaction = transaction;
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sender_lbl.textProperty().bind(transaction.senderProperty());
-        recevier_lbl.textProperty().bind(transaction.receiverProperty());
+        receiver_lbl.textProperty().bind(transaction.receiverProperty());
         amount_lbl.textProperty().bind(transaction.amountProperty().asString());
         trans_date_lbl.textProperty().bind(transaction.dateProperty().asString());
         transactionIcons();

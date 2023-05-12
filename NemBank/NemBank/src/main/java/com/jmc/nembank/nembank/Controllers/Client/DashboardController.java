@@ -2,6 +2,7 @@ package com.jmc.nembank.nembank.Controllers.Client;
 
 import com.jmc.nembank.nembank.Models.Model;
 import com.jmc.nembank.nembank.Models.Transaction;
+import com.jmc.nembank.nembank.Views.TransactionCellFactory;
 import javafx.beans.binding.Binding;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.Initializable;
@@ -29,6 +30,9 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         bindData();
+        initLatestTransactionsList();
+        transaction_listview.setItems(Model.getInstance().getLatestTransactions());
+        transaction_listview.setCellFactory(e -> new TransactionCellFactory());
     }
 
     private void bindData(){
@@ -38,5 +42,11 @@ public class DashboardController implements Initializable {
         checking_acc_num.textProperty().bind(Model.getInstance().getClient().checkingAccountProperty().get().accountNumberProperty());
         savings_bal.textProperty().bind(Model.getInstance().getClient().savingsAccountProperty().get().balanceProperty().asString());
         savings_acc_num.textProperty().bind(Model.getInstance().getClient().checkingAccountProperty().get().accountNumberProperty());
+    }
+
+    private void initLatestTransactionsList(){
+        if (Model.getInstance().getLatestTransactions().isEmpty()){
+            Model.getInstance().setLatestTransactions();
+        }
     }
 }

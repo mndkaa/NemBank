@@ -2,7 +2,6 @@ package com.jmc.nembank.nembank.Views;
 
 import com.jmc.nembank.nembank.Controllers.Client.TransactionCellController;
 import com.jmc.nembank.nembank.Models.Transaction;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
 
@@ -14,7 +13,7 @@ public class TransactionCellFactory extends ListCell<Transaction> {
             setText(null);
             setGraphic(null);
         } else {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/TransactionCell.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/TransactionsCell.fxml"));
             TransactionCellController controller = new TransactionCellController(transaction);
             loader.setController(controller);
             setText(null);

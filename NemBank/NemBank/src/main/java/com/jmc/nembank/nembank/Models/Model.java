@@ -97,12 +97,9 @@ public class Model {
                 LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
                 String message = resultSet.getString("Message");
                 transactions.add(new Transaction(sender, receiver, amount, date, message));
-
             }
-
         }catch (Exception e){
             e.printStackTrace();
-
         }
     }
 
