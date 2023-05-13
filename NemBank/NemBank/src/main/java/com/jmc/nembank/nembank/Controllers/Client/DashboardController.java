@@ -3,10 +3,10 @@ package com.jmc.nembank.nembank.Controllers.Client;
 import com.jmc.nembank.nembank.Models.Model;
 import com.jmc.nembank.nembank.Models.Transaction;
 import com.jmc.nembank.nembank.Views.TransactionCellFactory;
-import javafx.beans.binding.Binding;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
-    public Label user_name;
+    public Text user_name;
     public Label login_date;
     public Label checking_bal;
     public Label checking_acc_num;

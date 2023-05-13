@@ -22,9 +22,10 @@
 }
 
 .cell._container line {
-
 -fx-stroke: #EEEEEE;
 }
+
+
 
 .trans_amount_lbl {
     -fx-background-color: #132A13;

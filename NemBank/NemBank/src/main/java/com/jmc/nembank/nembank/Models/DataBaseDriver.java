@@ -86,8 +86,8 @@ public class DataBaseDriver {
         try{
             statement = this.conn.createStatement();
             LocalDate date = LocalDate.now();
-            statement.executeUpdate("INSERT INTO" +
-                    "Transactions(Sender, Receiver, Amount, Date, Message)" +
+            statement.executeUpdate("INSERT INTO " +
+                    "Transactions(Sender, Receiver, Amount, Date, Message) " +
                     "VALUES('"+sender+"', '"+receiver+"', "+amount+", '"+date+"', '"+message+"');");
         }catch (SQLException e){
             e.printStackTrace();
