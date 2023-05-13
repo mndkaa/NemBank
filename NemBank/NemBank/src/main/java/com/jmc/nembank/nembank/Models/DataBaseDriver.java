@@ -36,7 +36,7 @@ public class DataBaseDriver {
         ResultSet resultSet = null;
         try {
             statement = this.conn.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM Transactions WHERE Sender='"+pAddress+"' OR Receiver='"+pAddress+"' LIMIT "+limit+";");
+            resultSet = statement.executeQuery("SELECT * FROM Transactions WHERE Sender='"+pAddress+"' OR Receiver='"+pAddress+"' ORDER BY Date DESC, ID DESC LIMIT "+limit+";");
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -150,7 +150,7 @@ public class DataBaseDriver {
         ResultSet resultSet = null;
         try {
             statement = this.conn.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM Clients;");
+            resultSet = statement.executeQuery("SELECT * FROM Clients ORDER BY Date DESC, ID DESC;");
         } catch (SQLException e) {
             e.printStackTrace();
         }
