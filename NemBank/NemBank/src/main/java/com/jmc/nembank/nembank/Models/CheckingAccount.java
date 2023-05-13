@@ -1,7 +1,6 @@
 package com.jmc.nembank.nembank.Models;
 
 
-import com.jmc.nembank.nembank.Controllers.Client.Account;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 

@@ -1,6 +1,5 @@
 package com.jmc.nembank.nembank.Models;
 
-import com.jmc.nembank.nembank.Controllers.Client.Account;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

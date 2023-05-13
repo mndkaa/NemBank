@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -33,6 +34,8 @@ public class DashboardController implements Initializable {
         initLatestTransactionsList();
         transaction_listview.setItems(Model.getInstance().getLatestTransactions());
         transaction_listview.setCellFactory(e -> new TransactionCellFactory());
+        send_money_btn.setOnAction(event -> onSendMoney());
+
     }
 
     private void bindData(){
@@ -48,5 +51,31 @@ public class DashboardController implements Initializable {
         if (Model.getInstance().getLatestTransactions().isEmpty()){
             Model.getInstance().setLatestTransactions();
         }
+    }
+
+    private void onSendMoney(){
+        String receiver = payee_fld.getText();
+        double amount = Double.parseDouble(amount_fld.getText());
+        String message = message_fld.getText();
+        String sender = Model.getInstance().getClient().pAddressProperty().get();
+        ResultSet resultSet = Model.getInstance().getDataBaseDriver().searchClient(receiver);
+        try {
+            if(resultSet.isBeforeFirst()){
+                Model.getInstance().getDataBaseDriver().updateBalance(receiver, amount, "ADD");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        // Subtract from sender's savings account
+        Model.getInstance().getDataBaseDriver().updateBalance(sender, amount, "SUB");
+        // Update the savings account balance in the client object
+        Model.getInstance().getClient().savingsAccountProperty().get().setBalance(Model.getInstance().getDataBaseDriver().getSavingsAccountBalance(sender));
+        // Record new transaction
+        Model.getInstance().getDataBaseDriver().newTransaction(sender, receiver,amount, message);
+        // clear the fields
+        payee_fld.setText("");
+        amount_fld.setText("");
+        message_fld.setText("");
+
     }
 }

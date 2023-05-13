@@ -1,4 +1,4 @@
-package com.jmc.nembank.nembank.Controllers.Client;
+package com.jmc.nembank.nembank.Models;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -18,4 +18,8 @@ private final DoubleProperty balance;
     public StringProperty ownerProperty() {return owner;}
     public StringProperty accountNumberProperty() {return accountNumber;}
     public DoubleProperty balanceProperty() {return balance;}
+
+    public void setBalance(double balance){
+        this.balance.set(balance);
+    }
 }
