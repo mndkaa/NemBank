@@ -50,9 +50,9 @@
          </VBox>
          <VBox prefHeight="120.0" prefWidth="130.0" styleClass="report_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
             <children>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Suggetions/Bug?" />
-               <Label text="Use this to report any errors or suggetions" />
-               <Button fx:id="report_btn" mnemonicParsing="false" text="Rebort">
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Suggestions/Bug?" />
+               <Label text="Use this to report any errors or suggestions" />
+               <Button fx:id="report_btn" mnemonicParsing="false" text="Report">
                   <graphic>
                      <FontAwesomeIconView glyphName="PLUS" />
                   </graphic>
